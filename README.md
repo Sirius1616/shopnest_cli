@@ -6,7 +6,7 @@
 ~./console.py~
 
 ### Using the interpreter
-(shopnest) help
+$ (shopnest) help
 (shopnest) create User
 (shopnest) show all
 (shopnest) delete User
