@@ -6,10 +6,10 @@
 ~./console.py~
 
 ### Using the interpreter
-~(shopnest) help
-~(shopnest) create User
-~(shopnest) show all
-~(shopnest) delete User
+(shopnest) help
+(shopnest) create User
+(shopnest) show all
+(shopnest) delete User
 
 ### Examples
 ~(shopnest) create Product name='Laptop' price=999.99
