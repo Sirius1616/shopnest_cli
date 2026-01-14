@@ -6,13 +6,13 @@
 `./console.py`
 
 ### Using the interpreter
-``` bash
+``` 
 $ (shopnest) help
 $ (shopnest) create User
 $ (shopnest) show all
 $ (shopnest) delete User
 
-``` markdown
+```
 
 ### Examples
 `(shopnest) create Product name='Laptop' price=999.99
