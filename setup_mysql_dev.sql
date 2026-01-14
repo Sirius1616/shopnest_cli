@@ -11,10 +11,10 @@ CREATE DATABASE IF NOT EXISTS shopnest_test_db;
 CREATE USER IF NOT EXISTS 'shopnest_dev'@'localhost' IDENTIFIED BY 'Siriusa1.615';
 
 -- Grant privileges to user on development databases
-GRANT ALL PRIVILEGES ON shopnest_dev_db.* TO 'shopnest_dev@localhost';
+GRANT ALL PRIVILEGES ON shopnest_dev_db.* TO 'shopnest_dev'@'localhost';
 
 -- Gramt privileges to user on test databases
-GRANT ALL PRIVILEGES ON shopnest_test_db.* TO 'shopnest_dev@localhost';
+GRANT ALL PRIVILEGES ON shopnest_test_db.* TO 'shopnest_dev'@'localhost';
 
 -- Flush all privileges
 FLUSH PRIVILEGES;
