@@ -18,5 +18,5 @@ $ (shopnest) delete User
 `(shopnest) create Product name='Laptop' price=999.99
 
 ### Environmental variable
-
-
+- SHOPNEST_ENV: ...
+- SHOPNEST_MYSQL_USER: ...
