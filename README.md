@@ -3,10 +3,10 @@
 ## A command line interface from managing an e-commerce system with multiple storage backend 
 
 ### Starting the interpreter
-`./console.py~
+`./console.py`
 
 ### Using the interpreter
-``` markdown
+``` bash
 $ (shopnest) help
 $ (shopnest) create User
 $ (shopnest) show all
