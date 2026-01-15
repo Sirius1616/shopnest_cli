@@ -16,3 +16,17 @@ class ShopNestCommand(cmd.Cmd):
         """Exits the interpreter"""
 
         print('n\Exiting the CLI...')
+
+    def emptyline(self, arg):
+        """Do nothing when an empty line is ecountered"""
+
+        pass
+
+    def default(self, arg):
+        """Handles invalid commands"""
+
+        print(f'Error: {arg} is an invalid command, Type "Help" to sse available commands')
+
+
+if __name__ == '__main__':
+    ShopNestCommand().cmdloop()
