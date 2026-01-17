@@ -4,7 +4,7 @@ import cmd
 
 
 class ShopNestCommand(cmd.Cmd):
-    prompt = '(shopnest)'
+    prompt = '(shopnest) '
 
     def do_quit(self, arg):
         """Cammand that quites the command line"""
@@ -16,6 +16,7 @@ class ShopNestCommand(cmd.Cmd):
         """Exits the interpreter"""
 
         print('n\Exiting the CLI...')
+        return True
 
     def emptyline(self, arg):
         """Do nothing when an empty line is ecountered"""
