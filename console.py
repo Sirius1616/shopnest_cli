@@ -18,7 +18,7 @@ class ShopNestCommand(cmd.Cmd):
         print('n\Exiting the CLI...')
         return True
 
-    def emptyline(self):
+    def emptyline(self, arg):
         """Do nothing when an empty line is ecountered"""
 
         pass
