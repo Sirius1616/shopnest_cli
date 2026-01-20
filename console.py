@@ -1,10 +1,20 @@
-#!/usr/bin/python:%s/^M
+#!/usr/bin/python3
 
 import cmd
 
 
 class ShopNestCommand(cmd.Cmd):
-    prompt = '(shopnest) '
+    prompt = '(shopnest)'
+
+    def __init__(self):
+        super().__init__()
+        print("[DEBUG]__init__ called - creating command dispatcher")
+
+    def cmdloop(self, intro=None):
+        print("[DEBUG] Starting command loop - entering REPL")
+        super().cmdloop(intro)
+        print("[DEBUG] command loop ended - REPL terminated")
+
 
     def do_quit(self, arg):
         """Cammand that quites the command line"""
