@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from domain/
+from domain.base_model import BaseModel
 
 
 class BaseRepository:
@@ -17,3 +17,9 @@ class BaseRepository:
     def new(self, obj):
         """Sets in __object the obj with key <obj class name>.id"""
         key = f'{self.__class__.__name__}.{self.id}'
+
+        BaseRepository.__objects[key] = obj
+
+        return BaseRepository.__objects
+
+
