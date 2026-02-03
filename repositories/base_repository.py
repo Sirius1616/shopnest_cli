@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 from domain.base_model import BaseModel
 
 
@@ -11,15 +12,23 @@ class BaseRepository:
     def all(self):
         """Returns the dictionary __objects"""
 
-        return BaseRepository.__objects
+        return self.__objects
 
 
     def new(self, obj):
         """Sets in __object the obj with key <obj class name>.id"""
         key = f'{self.__class__.__name__}.{self.id}'
 
-        BaseRepository.__objects[key] = obj
+        self.__objects[key] = obj
 
-        return BaseRepository.__objects
+        return self.__objects
+
+    
+    def save(self):
+        """Serialize all the objects and save to JSON file"""
+        with open(self.__file_path, 'w', encoding='utf-8') as f:
+            for key in self.__objects.to_dict():
+                json.dump(key, f)
+
 
 
