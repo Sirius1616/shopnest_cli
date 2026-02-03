@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 import json
 from domain.base_model import BaseModel
 
@@ -26,9 +27,26 @@ class BaseRepository:
     
     def save(self):
         """Serialize all the objects and save to JSON file"""
+        obj_dict = {}
+        for key, value in self.__objects.to_dict().items():
+            obj_dict[key] = value
+
         with open(self.__file_path, 'w', encoding='utf-8') as f:
-            for key in self.__objects.to_dict():
-                json.dump(key, f)
+                json.dump(obj_dict, f)
+
+
+    def reload(self):
+        """The method that deserialized the json objects back to python objects"""
+
+        if os.path.exist(self.__file_path):
+            with open(self.__file_path, 'r', encoding='utf-8') as f:
+                des_obj = json.load(f)
+            return des_obj
+        else:
+            pass
+
+
+
 
 
 
