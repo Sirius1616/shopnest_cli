@@ -17,7 +17,7 @@ class BaseRepository:
 
     def new(self, obj):
         """Sets in __object the obj with key <obj class name>.id"""
-        key = f'{self.__class__.__name__}.{self.id}'
+        key = f'{obj.__class__.__name__}.{obj.id}'
 
         self.__objects[key] = obj
 
@@ -27,8 +27,8 @@ class BaseRepository:
     def save(self):
         """Serialize all the objects and save to JSON file"""
         obj_dict = {}
-        for key, value in self.__objects.to_dict().items():
-            obj_dict[key] = value
+        for key, value in self.__objects.items():
+            obj_dict[key] = value.to_dict()
 
         with open(self.__file_path, 'w', encoding='utf-8') as f:
                 json.dump(obj_dict, f)
@@ -37,12 +37,23 @@ class BaseRepository:
     def reload(self):
         """The method that deserialized the json objects back to python objects"""
 
+       
+        from domain.user import user
+        from domain.order import order
+        from domain.product import Product
+        from domain.base_model import BaseModel
+        
+
+        classes = {'BaseModel': BaseModel, 'User': User, 'Product': Product, 'Order': Order}
+
+
         if os.path.exists(self.__file_path):
-            if self.__file_path:
-                with open(self.__file_path, 'r', encoding='utf-8') as f:
-                    des_obj = json.load(f)
-                for key, value in des_obj.items():
-                    self.__objects[key] = value
+            with open(self.__file_path, 'r', encoding='utf-8') as f:
+                des_obj = json.load(f)
+
+            key = 
+            for key, value in des_obj.items():
+                self.__objects[key] = value
         else:
             pass
 

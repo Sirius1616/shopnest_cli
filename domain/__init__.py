@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from Repository.base_repository import BaseRepository
+from repositories.base_repository import BaseRepository
 
 
 storage = BaseRepository()
