@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import os
 import json
-from domain.base_model import BaseModel
 
 
 class BaseRepository:
