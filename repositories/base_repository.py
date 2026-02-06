@@ -38,10 +38,12 @@ class BaseRepository:
     def reload(self):
         """The method that deserialized the json objects back to python objects"""
 
-        if os.path.exist(self.__file_path):
-            with open(self.__file_path, 'r', encoding='utf-8') as f:
-                des_obj = json.load(f)
-            return des_obj
+        if os.path.exists(self.__file_path):
+            if self.__file_path:
+                with open(self.__file_path, 'r', encoding='utf-8') as f:
+                    des_obj = json.load(f)
+                for key, value in des_obj.items():
+                    self.__objects[key] = value
         else:
             pass
 
