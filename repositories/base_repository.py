@@ -38,8 +38,8 @@ class BaseRepository:
         """The method that deserialized the json objects back to python objects"""
 
        
-        from domain.user import user
-        from domain.order import order
+        from domain.user import User
+        from domain.order import Order
         from domain.product import Product
         from domain.base_model import BaseModel
         
@@ -51,13 +51,19 @@ class BaseRepository:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 des_obj = json.load(f)
 
-            obj_dictn = {}
             for key, value in des_obj.items():
-                for keys, values in value:
-                    obj_dictn[key] = values
+                for k, v in value:
+                    if k == "__class__":
+                        cls_name = k['__class__']
+                        if cls_name in classes:
+                            cls = classes[cls_name]
+                        else:
+                            print("Class don't exist")
+                            return
+                    self.__objects[key] = cls(**v)
+                        
 
-            for key, value in obj_dictn.items():
-                if key == '__class__':
+                
 
         else:
             pass
