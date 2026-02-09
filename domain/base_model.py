@@ -2,6 +2,7 @@
 
 import uuid
 from datetime import datetime
+from domain import storage
 
 
 class BaseModel:
@@ -12,7 +13,14 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 self.id = str(uuid.uuid4())
-                if key != '__class__':
+
+                if key == "created_at":
+                    self.created_at = datetime.fromisoformat(value)
+
+                elif key == "updated_at":
+                    self.updated_at = datetime.fromisoformat(value)
+
+                elif key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
@@ -22,7 +30,7 @@ class BaseModel:
 
 
     def __str__(self):
-        """A string representation of how the class will be strown when the string method is called on the class"""
+        """A string representation of how the class will be shown when the string method is called on the class"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
 
 
