@@ -51,9 +51,8 @@ class BaseRepository:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 des_obj = json.load(f)
 
-            key = 
-            for key, value in des_obj.items():
-                self.__objects[key] = value
+            
+            for key, value in des_obj:
         else:
             pass
 
