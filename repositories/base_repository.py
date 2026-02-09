@@ -52,18 +52,15 @@ class BaseRepository:
                 des_obj = json.load(f)
 
             for key, value in des_obj.items():
-                for k, v in value:
-                    if k == "__class__":
-                        cls_name = k['__class__']
-                        if cls_name in classes:
-                            cls = classes[cls_name]
-                        else:
-                            print("Class don't exist")
-                            return
-                    self.__objects[key] = cls(**v)
-                        
 
-                
+                class_name = value.get("__class__")
+
+                if class_name in classes:
+                    cls = classes[class_name]
+                    self.__objects[key] = cls(**value)
+                else:
+                    print("Class name don't exist")
+                    continue
 
         else:
             pass
