@@ -51,8 +51,14 @@ class BaseRepository:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 des_obj = json.load(f)
 
-            
-            for key, value in des_obj:
+            obj_dictn = {}
+            for key, value in des_obj.items():
+                for keys, values in value:
+                    obj_dictn[key] = values
+
+            for key, value in obj_dictn.items():
+                if key == '__class__':
+
         else:
             pass
 
