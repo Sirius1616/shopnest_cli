@@ -14,13 +14,14 @@ class ShopNestCommand(cmd.Cmd):
 
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         """Exits the console on the pressing of CTR + D gracefully without an error"""
-
+        print()
         return True
 
 
 
 if __name__ == '__main__':
+    
     ShopNestCommand().cmdloop()
     
