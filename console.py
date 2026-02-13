@@ -65,6 +65,27 @@ class ShopNestCommand(cmd.Cmd):
                     else:
                         print("** no instance found **")
 
+                        
+    def do_destroy(self, arg):
+        """Deletes an instance be=ased on the class name and id"""
+        if not arg:
+            print("** Class name missing **")
+            return True
+
+        arg_split = arg.split(" ")
+        if len(arg_split) > 0:
+            if arg_split[0] not in ShopNestCommand.classes:
+                print("class name does not exist")
+            else:
+                if len(arg_split) == 1:
+                    print('** instance id missing **')
+                else:
+                    new_obj = storage.all()
+                    obj_id = '.'.join([arg_split[0], arg_split[1]])
+                    if obj_id in new_obj:
+                        print(new_obj[obj_id])
+                    else:
+                        print("** no instance found **")
 
 
 
