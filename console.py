@@ -91,7 +91,7 @@ class ShopNestCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on the class name"""
         if not arg:
-            load_obj = storage.reload()
+            load_obj = storage.all()
             print(load_obj)
 
 
