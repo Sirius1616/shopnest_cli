@@ -90,9 +90,25 @@ class ShopNestCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on the class name"""
+
+        arg_split = arg.split(" ")
+        
+        new_dict = {}
         if not arg:
             load_obj = storage.all()
             print(load_obj)
+        else:
+            count = 0
+            for key, value in load_obj.to_dict().items():
+                if value['__class__'] == arg_split[0]:
+                    new_dict[key] = value
+                    count += 1
+            if count == 0:
+                print("** class doesn't exist **")
+            else:
+                print(new_dict)
+
+
 
 
 
