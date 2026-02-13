@@ -56,7 +56,7 @@ class ShopNestCommand(cmd.Cmd):
                 print("class name does not exist")
             else:
                 if len(arg_split) == 1:
-                    print('** instance id missing **')
+                    print('I am a good man')
 
 
 
