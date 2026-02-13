@@ -36,7 +36,7 @@ class ShopNestCommand(cmd.Cmd):
             return True
 
         arg_split = arg.split(" ")
-        if len(arg_split) < 2:
+        if len(arg_split) > 0:
             if arg_split[0] not in ShopNestCommand.classes:
                 print("class name does not exist")
             else:
@@ -44,9 +44,25 @@ class ShopNestCommand(cmd.Cmd):
                 new_obj.save()
                 print(new_obj.id)
 
+    def do_show(self, arg):
+        """Prints the string representation based on an instance of a class"""
+        if not arg:
+            print("** Class name missing **")
+            return True
+
+        arg_split = arg.split(" ")
+        if len(arg_split) > 0:
+            if arg_split[0] not in ShopNestCommand.classes:
+                print("class name does not exist")
+            else:
+                if len(arg_split) == 1:
+                    print('** instance id missing **')
+
+
+
+
 
 if __name__ == '__main__':
-    
     ShopNestCommand().cmdloop()
     
  
