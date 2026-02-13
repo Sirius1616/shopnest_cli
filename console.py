@@ -94,13 +94,14 @@ class ShopNestCommand(cmd.Cmd):
         arg_split = arg.split(" ")
         
         new_dict = {}
+        load_obj = storage.all()
         if not arg:
-            load_obj = storage.all()
             print(load_obj)
         else:
             count = 0
-            for key, value in load_obj.to_dict().items():
-                if value['__class__'] == arg_split[0]:
+            for key, value in load_obj.items():
+                class_name = key.split('.')[0]
+                if class_name == arg_split[0]:
                     new_dict[key] = value
                     count += 1
             if count == 0:
