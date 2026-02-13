@@ -57,6 +57,13 @@ class ShopNestCommand(cmd.Cmd):
             else:
                 if len(arg_split) == 1:
                     print('** instance id missing **')
+                else:
+                    new_obj = storage.all()
+                    obj_id = '.'.join([arg_split[0], arg_split[1]])
+                    if obj_id in new_obj:
+                        print(new_obj[obj_id])
+                    else:
+                        print("** no instance found **")
 
 
 
