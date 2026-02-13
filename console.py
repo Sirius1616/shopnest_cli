@@ -83,10 +83,16 @@ class ShopNestCommand(cmd.Cmd):
                     new_obj = storage.all()
                     obj_id = '.'.join([arg_split[0], arg_split[1]])
                     if obj_id in new_obj:
-                        print(new_obj[obj_id])
+                        del new_obj[obj_id]
+                        storage.save()
                     else:
                         print("** no instance found **")
 
+    def do_all(self, arg):
+        """Prints all string representation of all instances based or not on the class name"""
+        if not arg:
+            load_obj = storage.reload()
+            print(load_obj)
 
 
 
