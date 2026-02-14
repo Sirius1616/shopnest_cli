@@ -67,7 +67,7 @@ class ShopNestCommand(cmd.Cmd):
 
                         
     def do_destroy(self, arg):
-        """Deletes an instance be=ased on the class name and id"""
+        """Deletes an instance based on the class name and id"""
         if not arg:
             print("** Class name missing **")
             return True
