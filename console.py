@@ -63,7 +63,7 @@ class ShopNestCommand(cmd.Cmd):
                     if obj_id in new_obj:
                         print(new_obj[obj_id])
                     else:
-                        print("**  **")
+                        print("** no instance found **")
 
                         
     def do_destroy(self, arg):
