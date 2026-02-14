@@ -96,18 +96,25 @@ class ShopNestCommand(cmd.Cmd):
         new_dict = {}
         load_obj = storage.all()
         if not arg:
-            print(load_obj)
+            for key, value in load_obj.items():
+                new_dict[key] = value.to_dict()
+            print(new_dict)
         else:
             count = 0
             for key, value in load_obj.items():
                 class_name = key.split('.')[0]
                 if class_name == arg_split[0]:
-                    new_dict[key] = value
+                    new_dict[key] = value.to_dict()
                     count += 1
             if count == 0:
                 print("** class doesn't exist **")
             else:
                 print(new_dict)
+
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id by adding or updating attribute"""
+        
 
 
 
