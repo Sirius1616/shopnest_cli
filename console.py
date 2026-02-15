@@ -128,8 +128,15 @@ class ShopNestCommand(cmd.Cmd):
                 else:
                     new_obj = storage.all()
                     obj_id = '.'.join([arg_split[0], arg_split[1]])
-                    if obj_id in new_obj and len(arg_split) == 2:
-                        print('we are doing quite well for now')
+                    if obj_id in new_obj:
+                        if len(arg_split) > 2:
+                            if len(arg_split) > 3:
+                                setattr(new_obj[obj_id], arg_split[2], arg_split[3])
+                                storage.save()
+                            else:
+                                print('** value missing **')
+                        else:
+                            print('** attribute name missing **')
                     else:
                         print('** no instance found **')
 
