@@ -132,7 +132,7 @@ class ShopNestCommand(cmd.Cmd):
                         if len(arg_split) > 2:
                             if len(arg_split) > 3:
                                 setattr(new_obj[obj_id], arg_split[2], arg_split[3])
-                                storage.save
+                                storage.save()
                             else:
                                 print('** value missing **')
                         else:
