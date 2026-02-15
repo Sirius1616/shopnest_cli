@@ -114,7 +114,18 @@ class ShopNestCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or updating attribute"""
-        
+        if not arg:
+            print("** Class name missing **")
+            return True
+
+        arg_split = arg.split(" ")
+        if len(arg_split) > 0:
+            if arg_split[0] not in ShopNestCommand.classes:
+                print("class name does not exist")
+            else:
+                if len(arg_split) == 1:
+                    print('** instance id missing **')
+                else:
 
 
 
