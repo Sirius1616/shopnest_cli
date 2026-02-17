@@ -40,9 +40,17 @@ class ShopNestCommand(cmd.Cmd):
             if arg_split[0] not in ShopNestCommand.classes:
                 print("class name does not exist")
             else:
-                new_obj = ShopNestCommand.classes[arg_split[0]]()
-                new_obj.save()
-                print(new_obj.id)
+                if len(arg_split) < 2:
+                    param = arg_split[2:].split(' ')
+                    dict_param = {}
+                    for params in param:
+                        key, value = params.split('=')
+                        dict_param[key] = value
+                    print(dict_param)
+                else:
+                    new_obj = ShopNestCommand.classes[arg_split[0]]()
+                    new_obj.save()
+                    print(new_obj.id)
 
     def do_show(self, arg):
         """Prints the string representation based on an instance of a class"""
