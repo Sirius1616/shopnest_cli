@@ -40,12 +40,15 @@ class ShopNestCommand(cmd.Cmd):
             if arg_split[0] not in ShopNestCommand.classes:
                 print("class name does not exist")
             else:
-                if len(arg_split) < 1:
-                    param = arg_split[1:].split(' ')
+                if len(arg_split) > 1:
+                    param = arg_split[1:]
                     dict_param = {}
                     for params in param:
-                        key, value = params.split('=')
-                        dict_param[key] = value
+                        if '=' in str(params):
+                            key, value = params.split('=')
+                            dict_param[key] = value
+                        else:
+                            pass
                     print(dict_param)
                 else:
                     new_obj = ShopNestCommand.classes[arg_split[0]]()
