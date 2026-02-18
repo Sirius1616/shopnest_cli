@@ -46,6 +46,9 @@ class ShopNestCommand(cmd.Cmd):
                     for params in param:
                         if '=' in str(params):
                             key, value = params.split('=')
+                            if str(value)[0] == '"' or str(value)[0] == "'":
+                                value = value[1:-1]
+                            elif 
                             dict_param[key] = value
                         else:
                             pass
