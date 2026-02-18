@@ -58,7 +58,7 @@ class ShopNestCommand(cmd.Cmd):
                             dict_param[key] = value
                         else:
                             pass
-                    print(dict_param)
+                    print(new_obj.id)
                 else:
                     new_obj = ShopNestCommand.classes[arg_split[0]]()
                     new_obj.save()
