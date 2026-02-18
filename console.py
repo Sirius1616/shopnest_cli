@@ -36,6 +36,7 @@ class ShopNestCommand(cmd.Cmd):
             return True
 
         arg_split = arg.split(" ")
+        new_obj = ShopNestCommand.classes[arg_split[0]]()
         if len(arg_split) > 0:
             if arg_split[0] not in ShopNestCommand.classes:
                 print("class name does not exist")
@@ -52,15 +53,13 @@ class ShopNestCommand(cmd.Cmd):
                                 value = float(value)
                             else:
                                 value = int(value)
-                                new_obj = ShopNestCommand.classes[arg_split[0]]()
-                                setattr(new_obj, key, value)
                                 new_obj.save()
                             dict_param[key] = value
                         else:
                             pass
+                    setattr(new_obj, key, value)
                     print(new_obj.id)
                 else:
-                    new_obj = ShopNestCommand.classes[arg_split[0]]()
                     new_obj.save()
                     print(new_obj.id)
 
