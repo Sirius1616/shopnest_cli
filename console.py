@@ -52,6 +52,9 @@ class ShopNestCommand(cmd.Cmd):
                                 value = float(value)
                             else:
                                 value = int(value)
+                                new_obj = ShopNestCommand.classes[arg_split[0]]()
+                                setattr(new_obj, key, value)
+                                new_obj.save()
                             dict_param[key] = value
                         else:
                             pass
