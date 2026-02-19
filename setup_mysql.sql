@@ -1,2 +1,7 @@
 -- Script that prepares a mysql server for the project
 
+CREATE DATABASE IF NOT EXISTS ${DB_NAME};
+CREATE USER IF NOT EXISTS '${USER_NAME}'@'${DB_HOST}' IDENTIFIED BY '${DB_PASSWORD}';
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USER_NAME}'@'${DB_HOST}';
+GRANT SELECT ON performance_schema.* TO '${USER_NAME}'@'${DB_HOST}';
+FLUSH PRIVILEGES;
