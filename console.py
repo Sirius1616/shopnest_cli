@@ -49,7 +49,7 @@ class ShopNestCommand(cmd.Cmd):
                             key, value = params.split('=')
                             if value[0] == '"' or value[0] == "'":
                                 value = value[1:-1]
-                            elif float(value) == True:
+                            elif isinstance(float(value), float):
                                 value = float(value)
                             else:
                                 value = int(value)
