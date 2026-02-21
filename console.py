@@ -158,6 +158,7 @@ class ShopNestCommand(cmd.Cmd):
                             print('** attribute name missing **')
                     else:
                         print('** no instance found **')
+                        
 
 
 

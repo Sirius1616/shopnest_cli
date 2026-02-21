@@ -54,6 +54,12 @@ class BaseModel:
                 dictn[key] = value
 
         return dictn
+    
+
+    def delete(self):
+        """Deletes current instance from the storage"""
+
+        storage.delete(self)
 
 
 
