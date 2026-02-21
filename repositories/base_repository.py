@@ -12,8 +12,15 @@ class BaseRepository:
 
     def all(self, cls=None):
         """Returns the dictionary __objects"""
-
-        return self.__objects
+        if cls:
+            new_objects = {}
+            for key, value in self.__objects:
+                class_name = key.split('.')[0]
+                if cls == class_name:
+                    new_objects[key] = value
+            return new_objects
+        else:
+            return self.__objects
 
 
     def new(self, obj):
