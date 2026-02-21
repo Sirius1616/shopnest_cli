@@ -10,14 +10,6 @@ class BaseRepository:
     __objects = {}
 
 
-    from domain.user import User
-    from domain.order import Order
-    from domain.product import Product
-    from domain.base_model import BaseModel
-        
-
-    classes = {'BaseModel': BaseModel, 'User': User, 'Product': Product, 'Order': Order}
-
     def all(self, cls=None):
         """Returns the dictionary __objects"""
 
@@ -46,6 +38,14 @@ class BaseRepository:
     def reload(self):
         """The method that deserialized the json objects back to python objects"""
 
+        from domain.user import User
+        from domain.order import Order
+        from domain.product import Product
+        from domain.base_model import BaseModel
+        
+
+        classes = {'BaseModel': BaseModel, 'User': User, 'Product': Product, 'Order': Order}
+
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 des_obj = json.load(f)
@@ -54,8 +54,8 @@ class BaseRepository:
 
                 class_name = value.get("__class__")
 
-                if class_name in BaseRepository.classes:
-                    cls = BaseRepository.classes[class_name]
+                if class_name in classes:
+                    cls = classes[class_name]
                     self.__objects[key] = cls(**value)
                 else:
                     print("Class name don't exist")
