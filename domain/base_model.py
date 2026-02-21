@@ -1,12 +1,21 @@
 #!/usr/bin/python3
 
 import uuid
-from datetime import datetime
 from domain import storage
+from datetime import datetime
+from sqlalchemy.orm import declarative_base
+from sqlalchemy import Column, String, Integer, DateTime
 
+
+Base = declarative_base()
 
 class BaseModel:
     """Class that is the base and every other class inherits from"""
+    id = Column(String(60), primary_key=True, unique=True, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+
+    
     def __init__(self, *args, **kwargs):
         """Init method to instantiate the classes"""
         
