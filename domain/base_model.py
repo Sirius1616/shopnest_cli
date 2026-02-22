@@ -17,7 +17,7 @@ class BaseModel:
 
     
     def __init__(self, *args, **kwargs):
-        """Init method to instantiate the """
+        """Init method to instantiate the classes"""
         
         if kwargs:
             for key, value in kwargs.items():
