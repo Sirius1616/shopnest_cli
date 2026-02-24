@@ -60,6 +60,8 @@ class BaseModel:
         for key, value in self.__dict__.items():
             if key == "created_at" or key == "updated_at":
                 dictn[key] = value.strftime('%Y-%m-%dT%H:%M:%S.%f')
+            elif dictn[key] == '_sa_instance_state':
+                continue
             else:
                 dictn[key] = value
 
