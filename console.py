@@ -19,7 +19,7 @@ class ShopNestCommand(cmd.Cmd):
     
 
     def do_quit(self, arg):
-        """Quit command that exits the program"""
+        """Quit command that exits the program""
 
 
         return True
