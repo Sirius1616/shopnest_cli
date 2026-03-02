@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from sqlalchemy import create_engine
 
 
 
@@ -9,3 +10,5 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """Instantiates the engines created"""
+        self.__engine = create_engine("mysql+pymysql://root:password@localhost/mydatabase")
