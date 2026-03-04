@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import uu
+import uuid
 from domain import storage
 from datetime import datetime
 from sqlalchemy.orm import declarative_base
