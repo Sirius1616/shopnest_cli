@@ -1,17 +1,31 @@
-#!/usr/bin/env python3
-import os
-from domain.base_model import BaseModel
-from sqlalchemy import Column, ForeignKey, String
+#!/usr/bin/python3
+
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 
 
-class Category(BaseModel):
-    """Category class that shows the grouping of Items inheriting attributes from Basemodel"""
+class BaseRepository:
+    """Base repository responsible for database operations"""
 
-    __tablename__ = 'categories'
+    def __init__(self, db_url="sqlite:///shopnest.db"):
+        """Initialize database engine and session"""
+        self.engine = create_engine(db_url)
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
 
-    name = Column(String(128), nullable=False)
-    category_id = Column(String(60), primary_key=True, nullable=False)
+    def new(self, obj):
+        """Add object to session"""
+        self.session.add(obj)
 
-    if os.getenv('')
+    def save(self):
+        """Commit changes"""
+        self.session.commit()
 
+    def delete(self, obj=None):
+        """Delete object from session"""
+        if obj:
+            self.session.delete(obj)
 
+    def all(self, model):
+        """Return all objects of a model"""
+        return self.session.query(model).all()

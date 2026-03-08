@@ -3,18 +3,10 @@
 import uuid
 from domain import storage
 from datetime import datetime
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, String, Integer, DateTime
 
-
-Base = declarative_base()
 
 class BaseModel:
     """Class that is the base and every other class inherits from"""
-    id = Column(String(60), primary_key=True, unique=True, nullable=False)
-    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
-    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
-
     
     def __init__(self, *args, **kwargs):
         """Init method to instantiate the classes"""
@@ -60,8 +52,6 @@ class BaseModel:
         for key, value in self.__dict__.items():
             if key == "created_at" or key == "updated_at":
                 dictn[key] = value.strftime('%Y-%m-%dT%H:%M:%S.%f')
-            elif dictn[key] == '_sa_instance_state':
-                continue
             else:
                 dictn[key] = value
 

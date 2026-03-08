@@ -2,7 +2,4 @@
 
 from repositories.base_repository import BaseRepository
 
-
 storage = BaseRepository()
-
-storage.reload()
